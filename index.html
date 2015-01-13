@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>模拟滚动条 demo</title>
+	<style>
+		html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin:0; padding:0; }
+		fieldset, img { border:none; }
+		address, caption, cite, code, dfn, th, var { font-style:normal; font-weight:normal; }
+		ul, ol { list-style:none; }
+		input { padding-top:0; padding-bottom:0; }
+		select, input { vertical-align:middle; }
+		select, input, textarea { font-size:12px; margin:0; }
+		table { border-collapse:collapse; }
+		body { background:#fff; color:#000; font:14px/20px "Arial", "Microsoft YaHei", "微软雅黑", "SimSun", "宋体"; -webkit-text-size-adjust:none;}
+		iframe { border:none;}
+		.clearfix:after { content:"."; display:block; height:0; visibility:hidden; clear:both; }
+		.clearfix { zoom:1; }
+		.clearit { clear:both; height:0; font-size:0; overflow:hidden; }
+		a { color:#000; text-decoration:none; }
+		a:visited { color:#800080; }
+		a:hover{ color: #B58D4F;}
+		a:hover, a:active, a:focus { text-decoration:none; }
+
+		.wrap{ width: 1000px; margin: 0 auto; padding-bottom: 50px;}
+		h2{ font-size: 20px; line-height: 40px; padding-top: 10px;}
+		h3{ font-size: 16px; line-height: 40px; padding-top: 5px;}
+		/*for demo*/
+		.scroll_w0{ position: relative; width: 310px;}
+		.scroll0{ height: 500px; width: 300px; overflow: hidden; background-color: #fffff0;}
+		.scroll0 img{ display: block;}
+		.scroll_w1{ position: relative; height: 310px; width: 500px; overflow: hidden;}
+		.scroll1{ height: 300px; width: 500px; overflow: hidden; background-color: #fffff0;}
+		.scroll1 img{ display: block;}
+		.scroll_w2{ position: relative; height: 510px; width: 510px; overflow: hidden;}
+		.scroll2{ height: 500px; width: 500px; overflow: hidden; background-color: #fffff0;}
+		.scroll2 img{ display: block;}
+	</style>
+</head>
+<body>
+	<link rel="stylesheet" href="src/ScrollBar.css">
+	<script src="src/ScrollBar.js"></script>
+	<div class="wrap">
+    	<div class="about">
+	    	<h2>特性：</h2>
+	        <p>支持竖向(v)、横向(h)、自动双向(auto)三种方向设置</p>
+	        <p>支持自动检查容器大小变化而重新调整(多用于图片加载，ajax填充内容等)</p>
+	        <p>支持响应鼠标滚轮，触屏设备的touch行为</p>
+        </div>
+    	<div class="config">
+	    	<h2>主要配置参数：</h2>
+	        <p>wrapId: 滚动外层容器id，也可直接传入dom</p>
+	        <p>dir: 设置滚动方向，可选值：'v'-纵向，'h'-横向，'auto'-自动</p>
+	        <p>autoFix: 设置为true将根据滚动内容的变化(如: 滚动内容含有未内联size的图片需要加载，ajax填充内容等情形)自动调整滚动条状态</p>
+        </div>
+    	<div class="api">
+	    	<h2>自带公有方法：</h2>
+	        <p>refresh: 用于更新滚动条视图及状态(通常当滚动内容有变化，如实例化完成后有图片加载，ajax填充内容等手动调用)</p>
+	        <p>scrollTo: 手动调整到自定义位置，需显式传入两个参数，参数一为滚动位置的百分比，参数二为是否纵向滚动条，如（点击）<a style="color: #32A9F8" href="javascript:s1.scrollTo(0.5, true)">s1.scrollTo(0.5, 1)</a>将demo1手动调整到50%的位置</p>
+        </div>
+		<!-- demo0 vertical -->
+		<h2>demos</h2>
+		<h3>竖向</h3>
+		<div class="scroll_w0" id="scroll_w0">
+			<div class="scroll0">
+				<p>文字内容，放张图片测试autofix</p>
+				<img src="http://ww1.sinaimg.cn/large/844c0413jw1e5i7s4har7j21kw11sqhs.jpg" alt="">
+				<p>文字内容完</p>
+			</div>
+		</div>
+		<!-- demo0 end -->
+		<!-- demo1 horizontal -->
+		 <h3>横向</h3>
+		<div class="scroll_w1" id="scroll_w1">
+			<div class="scroll1">
+				<p>文字内容，放张图片测试autofix</p>
+				<img src="http://ww1.sinaimg.cn/large/844c0413jw1e5i7s4har7j21kw11sqhs.jpg" alt="">
+				<p>文字内容完</p>
+			</div>
+		</div> 
+		<!-- demo1 end -->
+		<!-- demo2 auto -->
+		 <h3>自动</h3>
+		<div class="scroll_w2" id="scroll_w2">
+			<div class="scroll2">
+				<p>文字内容，放张图片测试autofix</p>
+				<img src="http://ww1.sinaimg.cn/large/844c0413jw1e5i7s4har7j21kw11sqhs.jpg" alt="">
+				<p>文字内容完</p>
+			</div>
+		</div> 
+		<!-- demo2 end -->
+		<script>
+			var s1 = new ScrollBar({
+				wrapId : 'scroll_w0',
+				dir : 'v',
+				autoFix : true
+			});
+			var s2 = new ScrollBar({
+				wrapId : 'scroll_w1',
+				dir : 'h',
+				autoFix : true
+			});
+			var s3 = new ScrollBar({
+				wrapId : 'scroll_w2',
+				dir : 'auto',
+				autoFix : true
+			});
+		</script>
+	</div>
+</body>
+</html>
