@@ -26,8 +26,8 @@ var ScrollBar = function(opts) {
 		_class: function(searchClass, node, tag) {
 			var classElements = [],
 				els, elsLen, pattern;
-			if (node == null) node = document.body;
-			if (tag == null) tag = '*';
+			if (node === null) node = document.body;
+			if (tag === null) tag = '*';
 			if (node.getElementsByClassName) {
 				return node.getElementsByClassName(searchClass);
 			}
@@ -180,14 +180,14 @@ var ScrollBar = function(opts) {
 			if (d.h_sHandle) {
 				d.h_sHandle.onmouseover = function(e) {
 					this.className += ' scrollbar_on';
-				}
+				};
 				d.h_sHandle.onmouseout = function(e) {
 					this.className = 'scrollbar_handle';
-				}
+				};
 				d.h_sHandle.onmousedown = function(e) {
 					isVBar = false;
 					onDown.call(this, e);
-				}
+				};
 			}
 
 			if('ontouchstart' in window){
@@ -247,9 +247,9 @@ var ScrollBar = function(opts) {
 				that.refresh();
 				if (c.dir === 'auto' || c.dir === 'v') {
 					if (delta < 0) {
-						if (s.v_bar_cur == s.v_client - s.v_barSize) return;
+						if (s.v_bar_cur === s.v_client - s.v_barSize) return;
 					} else {
-						if (s.v_bar_cur == 0) return;
+						if (s.v_bar_cur === 0) return;
 					}
 					_prevent(e);
 					toPosY = s.v_bar_cur - delta * (s.v_client - s.v_barSize) / 10;
@@ -258,9 +258,9 @@ var ScrollBar = function(opts) {
 					that.scrollTo(toPosY / (s.v_client - s.v_barSize), true);
 				} else if (c.dir === 'h') {
 					if (delta < 0) {
-						if (s.h_bar_cur == s.h_client - s.h_barSize) return;
+						if (s.h_bar_cur === s.h_client - s.h_barSize) return;
 					} else {
-						if (s.h_bar_cur == 0) return;
+						if (s.h_bar_cur === 0) return;
 					}
 					_prevent(e);
 					toPosX = s.h_bar_cur - delta * (s.h_client - s.h_barSize) / 10;
@@ -343,7 +343,7 @@ var ScrollBar = function(opts) {
 				}
 				if (dragEle.releaseCapture) {
 					dragEle.onlosecapture = null;
-					dragEle.releaseCapture()
+					dragEle.releaseCapture();
 				}
 				if (window.releaseEvents) {
 					window.onblur = null;
@@ -443,7 +443,7 @@ var ScrollBar = function(opts) {
 			this._refreshStates();
 
 			// 总长或总宽为0, 通常原因为dom不可见, 不需要刷新
-			if (s.v_total == 0 || s.v_total == 0){ return };
+			if (s.v_total === 0 || s.h_total === 0){ return };
 
 			if (c.dir === 'auto' || c.dir === 'v') {
 				s.v_barSize = s.v_client * s.v_client / s.v_total;
